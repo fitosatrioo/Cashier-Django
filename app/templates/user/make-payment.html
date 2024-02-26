@@ -1,0 +1,65 @@
+{% extends 'home.html' %}
+
+{% block content %}
+    <h1 class="mt-4">Payment Form</h1>
+    <form method="post" id="paymentForm">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="total_price" class="form-label">Total Price to Pay:</label>
+            <input type="text" name="total_price" id="total_price" class="form-control" disabled>
+        </div>
+        <div class="mb-3">
+            <label for="amount" class="form-label">Payment Amount:</label>
+            <input type="number" name="amount" id="amount" class="form-control">
+            <div id="amountError" class="text-danger"></div>
+        </div>
+        <div class="d-flex">
+            <button type="submit" class="btn btn-primary me-2">Pay</button>
+            <a href="{% url 'order_detail' pk=order.pk %}" class="btn btn-secondary">Back</a>
+        </div>
+    </form>
+
+    <!-- Payment Success Modal -->
+    <div class="modal fade" id="paymentSuccessModal" tabindex="-1" aria-labelledby="paymentSuccessModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="paymentSuccessModalLabel">Payment Success!</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Your payment has been successfully processed.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var orderDiscount = {{ order.calculate_discount }};
+            var totalInput = document.getElementById('total_price');
+            
+            // Set the initial value based on whether there is a discount
+            if (orderDiscount > 0) {
+                totalInput.value = '{{ order.discounted_total_price }}';
+            } else {
+                totalInput.value = '{{ order.total_price }}';
+            }
+
+            // Update the input field dynamically when the discount changes
+            document.getElementById('paymentForm').addEventListener('change', function() {
+                var orderDiscount = {{ order.calculate_discount }};
+                var totalInput = document.getElementById('total_price');
+
+                if (orderDiscount > 0) {
+                    totalInput.value = '{{ order.discounted_total_price }}';
+                } else {
+                    totalInput.value = '{{ order.total_price }}';
+                }
+            });
+        });
+    </script>
+{% endblock %}

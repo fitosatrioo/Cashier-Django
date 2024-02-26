@@ -1,0 +1,114 @@
+{% load static %}
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Dashboard</title>
+        <link href="{% static 'simple-datatables@7.1.2/dist/style.min.css' %}" rel="stylesheet" />
+        <link href="{% static 'css/styles1.css' %}" rel="stylesheet" />
+        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+
+    </head>
+    <body class="sb-nav-fixed">
+        <nav style="background-color: #005B41;" class="sb-topnav navbar navbar-expand">
+            <!-- Navbar Brand-->
+            <a style="color: white;" class="navbar-brand ps-3" href="{% url 'home' %}">Dashboard</a>
+            <!-- Sidebar Toggle-->
+            <button style="color: white;" class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
+            <!-- Navbar Search-->
+            <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0" method="get" action="{% url 'list' %}">
+                <div class="input-group">
+                    <input class="form-control" type="search" name="search" placeholder="Search for a weapon" aria-label="Search for a weapon" aria-describedby="btnNavbarSearch" value="{{ request.GET.search }}">
+                    <button class="btn btn-outline-success btn-sm" id="btnNavbarSearch" type="submit"><i class="fas fa-search"></i></button>
+                </div>
+            </form>
+            <!-- Navbar-->
+            <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+                <li class="nav-item dropdown">
+                    <a style="color: white;" class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fas fa-user fa-fw"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+        <div  id="layoutSidenav">
+            <div  id="layoutSidenav_nav">
+                <nav style="background-color: #005B41;" class="sb-sidenav accordion" id="sidenavAccordion">
+                    <div class="sb-sidenav-menu">
+                        <div class="nav">
+                            {% if request.user.is_authenticated and not request.user.is_staff %}
+                            <a style="color: white;" class="nav-link" href="{% url 'list' %}">
+                                <div class="sb-nav-link-icon"><i></i></div>
+                                List Gun
+                            </a>
+                            <a style="color: white;" class="nav-link" href="{% url 'create-order' %}">
+                                <div class="sb-nav-link-icon"><i></i></div>
+                                Buy Gun
+                            </a>
+                            <a style="color: white;" class="nav-link" href="#">
+                                <div class="sb-nav-link-icon"><i></i></div>
+                                Receipts
+                            </a>
+                            {% endif %}
+
+                            {% if request.user.is_authenticated and request.user.is_staff %}
+                            <a style="color: white;" class="nav-link" href="{% url 'list' %}">
+                                <div class="sb-nav-link-icon"><i></i></div>
+                                List Gun
+                            </a>
+                            <a style="color: white;" class="nav-link" href="{% url 'create-gun' %}">
+                                <div class="sb-nav-link-icon"><i></i></div>
+                                Add Data
+                            </a>
+                            <a style="color: white;" class="nav-link" href="{% url 'laporan_transaksi' %}">
+                                <div class="sb-nav-link-icon"><i></i></div>
+                                Sales Report
+                            </a>
+                            <a style="color: white;" class="nav-link" href="{% url 'tampil-grafik' %}">
+                                <div class="sb-nav-link-icon"><i></i></div>
+                                Graph
+                            </a>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="sb-sidenav-footer">
+                        <div class="small">Logged in as:</div>
+                        {{request.user}}
+                    </div>
+                </nav>
+            </div>
+            <div id="layoutSidenav_content">
+                <main>
+                    <div class="container-fluid px-4">
+                        <h1 class="mt-4">Welcome to Ammunation!</h1>
+                        
+                        <div class="row"></div>
+                            {% block content %}{% endblock %}
+                        <div class="row"></div>
+                    </div>
+                </main>
+                <footer class="py-4 bg-light mt-auto">
+                    <div class="container-fluid px-4">
+                        <div class="d-flex align-items-center justify-content-between small">
+                            <div class="text-muted">Copyright &copy; Ammunation 2024</div>
+
+                        </div>
+                    </div>
+                </footer>
+            </div>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        <script src="{% static 'js/scripts.js' %}"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+        <script src="{% static 'assets/demo/chart-area-demo.js' %}"></script>
+        <script src="{% static 'assets/demo/chart-bar-demo.js' %}"></script>
+        <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
+        <script src="{% static 'js/datatables-simple-demo.js' %}"></script>
+    </body>
+</html>

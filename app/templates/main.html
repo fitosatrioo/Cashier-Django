@@ -1,0 +1,122 @@
+{% load static %}
+<html lang="en">
+<head>
+
+	<meta charset="utf-8">
+
+	<title>Ammunation</title>
+
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+
+	<!-- stylesheets css -->
+<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+<link rel="stylesheet" href="{% static 'css/animate.min.css' %}">
+
+<link rel="stylesheet" href="{% static 'css/et-line-font.css' %}">
+<link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+
+<link rel="stylesheet" href="{% static 'css/vegas.min.css' %}">
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+<link href='https://fonts.googleapis.com/css?family=Rajdhani:400,500,700' rel='stylesheet' type='text/css'>
+
+
+</head>
+<body>
+
+<!-- preloader section -->
+<section class="preloader">
+	<div class="sk-circle">
+       <div class="sk-circle1 sk-child"></div>
+       <div class="sk-circle2 sk-child"></div>
+       <div class="sk-circle3 sk-child"></div>
+       <div class="sk-circle4 sk-child"></div>
+       <div class="sk-circle5 sk-child"></div>
+       <div class="sk-circle6 sk-child"></div>
+      <div class="sk-circle7 sk-child"></div>
+       <div class="sk-circle8 sk-child"></div>
+       <div class="sk-circle9 sk-child"></div>
+       <div class="sk-circle10 sk-child"></div>
+       <div class="sk-circle11 sk-child"></div>
+       <div class="sk-circle12 sk-child"></div>
+     </div>
+</section>
+
+<!-- home section -->
+<section id="home"  style="background-color: #005B41;">
+	<div class="container">
+		<div class="row">
+
+			<div class="col-md-offset-2 col-md-8 col-sm-12">
+				<div class="home-thumb">
+					<h1 style="color: white;">Welcome to Ammunation</h1>
+          			<h3 class="wow fadeInUp" data-wow-delay="0.6s">Choose the Best to Protect Yourself and Your Family</h3>
+              <a href="{% url 'register' %}" class="btn btn-lg btn-success smoothScroll wow fadeInUp" data-wow-delay="1.0s">Register</a>
+        			<a href="{% url 'login' %}" class="btn btn-lg btn-success smoothScroll wow fadeInUp" data-wow-delay="1.0s">Login</a>
+				</div>
+			</div>
+
+		</div>
+	</div>		
+</section>
+
+<!-- about section -->
+<section id="about">
+	<div class="container">
+		<div class="row">
+
+      <div class="col-md-6 col-sm-12">
+        <img src="{% static 'images/sniper.png' %}" class="img-responsive wow fadeInUp" alt="About">
+      </div>
+
+			<div class="col-md-6 col-sm-12">
+				<div class="about-thumb">
+					<div class="section-title">
+						<h1 class="wow fadeIn" data-wow-delay="0.2s">our company</h1>
+						<h3 class="wow fadeInUp" data-wow-delay="0.4s">Ammunation is Gun Shop based in Indonesia</h3>
+					</div>
+					<div class="wow fadeInUp" data-wow-delay="0.6s">
+						<p>Ammunation is a distinguished gun shop based in Indonesia, offering a comprehensive range of firearms and accessories. Our commitment to excellence is reflected in our carefully curated selection of products, ensuring that our customers have access to high-quality and reliable options for their shooting needs.</p>
+						<p>At Ammunation, we prioritize the satisfaction and safety of our customers. Our knowledgeable and experienced staff is dedicated to providing expert guidance and assistance, ensuring that each customer makes informed decisions based on their unique requirements.</p>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</section>
+
+<!-- footer section -->
+<footer>
+	<div class="container">
+		<div class="row">
+
+      <svg class="svgcolor-light" preserveAspectRatio="none" viewBox="0 0 100 102" height="100" width="100%" version="1.1" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0 0 L50 100 L100 0 Z"></path>
+      </svg>
+
+      <div class="col-md-4 col-sm-6">
+        <h2>Ammunation</h2>
+          <div class="wow fadeInUp" data-wow-delay="0.3s">
+             <p class="copyright-text">Copyright &copy; 2024 Ammunation</p>
+          </div>
+      </div>
+		</div>
+	</div>
+</footer>
+
+<!-- javascript js -->
+<script src="{% static 'js/jquery.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+
+<script src="{% static 'js/vegas.min.js' %}"></script>
+
+<script src="{% static 'js/wow.min.js' %}"></script>
+<script src="{% static 'js/smoothscroll.js' %}"></script>
+<script src="{% static 'js/custom.js' %}"></script>
+
+</body>
+</html>

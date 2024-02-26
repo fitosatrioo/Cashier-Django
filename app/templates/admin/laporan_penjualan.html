@@ -1,0 +1,43 @@
+{% extends 'home.html' %}
+
+{% block content %}
+  <h1 class="display-4 font-weight-bold">Sales Report</h1>
+  <hr>
+
+  <div class="row mb-4">
+    <div class="col">
+      <h4>Total Transactions: {{ total_transactions }}</h4>
+    </div>
+    <div class="col">
+      <h4>Best Sellers:  {{ sellers.gun__name }}</h4>
+    </div>
+    <div class="col">
+      <h4>Total Revenue (All): Rp. {{ total_revenue }}</h4>
+    </div>
+  </div>
+  <hr>
+
+  <div class="row">
+    <div class="col">
+      <h3>History Transactions:</h3>
+      <table class="table table-hover table-bordered">
+        <thead class="table-light">
+          <tr>
+            <th scope="col">Product Name</th>
+            <th scope="col">Total Quantity Sold</th>
+            <th scope="col">Total Revenue</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for best_seller in best_sellers %}
+            <tr>
+              <td>{{ best_seller.gun__name }}</td>
+              <td>{{ best_seller.total_quantity }}</td>
+              <td>Rp. {{ best_seller.total_revenue }}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+{% endblock %}

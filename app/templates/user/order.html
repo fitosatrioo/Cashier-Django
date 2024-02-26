@@ -1,0 +1,24 @@
+{% extends 'home.html' %}
+
+{% block content %}
+    <h1 class="mt-4">Form Pesanan</h1>
+    <form method="post" class="mb-3">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="gun" class="form-label">Pilih Weapon:</label>
+            <select name="gun" id="gun" class="form-select">
+                {% for g in gun_list %}
+                    <option value="{{ g.id }}">{{ g.name }} - {{ g.price }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="quantity" class="form-label">Jumlah Pesanan:</label>
+            <input type="number" name="quantity" id="quantity" class="form-control">
+        </div>
+        <div class="d-flex">
+            <button type="submit" class="btn btn-primary me-2">Submit</button>
+            <a href="{% url 'list' %}" class="btn btn-secondary">Back</a>
+        </div>
+    </form>
+{% endblock %}

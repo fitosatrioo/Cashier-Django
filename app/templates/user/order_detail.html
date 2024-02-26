@@ -1,0 +1,37 @@
+{% extends 'home.html' %}
+
+{% block content %}
+    <h1 class="mt-4">Order Details</h1>
+    <div class="card">
+        <div class="card-body">
+            <table class="table table-bordered">
+                <tr>
+                    <th style="width: 30%;">Weapon</th>
+                    <td>{{ order.gun.name }}</td>
+                </tr>
+                <tr>
+                    <th>Amount</th>
+                    <td>{{ order.quantity }}</td>
+                </tr>
+                <tr>
+                    <th>Discount Percentage</th>
+                    <td>{{ order.discount_percentage }}%</td>
+                </tr>
+                <tr>
+                    <th>Total Price</th>
+                    <td>{{ order.discounted_total_price|floatformat:"0"  }}</td>
+                </tr>
+                <tr>
+                    <th>Order Date</th>
+                    <td>{{ order.date }}</td>
+                </tr>
+            </table>
+            <div class="row mt-3">
+                <div class="col-md-6">
+                  <a href="{% url 'make-payment' order.id %}" class="btn btn-primary">Make a Payment!</a>
+                  <a href="{% url 'create-order' %}" class="btn btn-secondary ml-2">Return</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

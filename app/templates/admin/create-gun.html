@@ -1,0 +1,68 @@
+{% extends 'home.html' %}
+
+{% block content %}
+<div class="container">
+  <h3 class="mb-4">Add Data</h3>
+  <hr>
+
+  <form method="POST" enctype="multipart/form-data" autocomplete="off" class="mt-4">
+    {% csrf_token %}
+
+    <div class="row mb-3">
+        <div class="col-4">
+            <label for="{{ form.name.id_for_label }}" class="form-label">Name:</label>
+        </div>
+        <div class="col-8">
+            {{ form.name }}
+        </div>
+    </div>
+    
+    <div class="row mb-3">
+        <div class="col-4">
+            <label for="{{ form.price.id_for_label }}" class="form-label">Price:</label>
+        </div>
+        <div class="col-8">
+            {{ form.price }}
+        </div>
+    </div>
+    
+    <div class="row mb-3">
+        <div class="col-4">
+            <label for="{{ form.stock.id_for_label }}" class="form-label">Stock:</label>
+        </div>
+        <div class="col-8">
+            {{ form.stock }}
+        </div>
+    </div>
+    
+    <div class="row mb-3">
+        <div class="col-4">
+            <label for="{{ form.description.id_for_label }}" class="form-label">Description:</label>
+        </div>
+        <div class="col-8">
+            {{ form.description }}
+        </div>
+    </div>
+    
+    <div class="row mb-3">
+        <div class="col-4">
+            <label for="{{ form.image.id_for_label }}" class="form-label">Image:</label>
+        </div>
+        <div class="col-8">
+            {{ form.image }}
+        </div>
+    </div>
+    
+
+        <div class="mb-3">
+            <button type="submit" class="btn btn-primary">
+                Create Data <i aria-hidden="true"></i>
+            </button>
+
+            <a href="{% url 'list' %}" class="btn btn-secondary">
+                Return <i aria-hidden="true"></i>
+            </a>
+        </div>
+    </form>
+</div>
+{% endblock %}
